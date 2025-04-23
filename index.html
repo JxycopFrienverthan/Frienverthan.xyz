@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>FRIENVERTHAN</title>
+  <link rel="icon" href="https://media.discordapp.net/attachments/1293925675144839250/1364588481447329863/Screenshot_1446.jpg?ex=680a378e&is=6808e60e&hm=a5764a49566d20121f9403ba598ac11ba0d6447f93457ab837fb777b97a3e7ea&=&format=webp&width=981&height=552" type="image/webp">
+  <style>
+    body {
+      margin: 0;
+      background: url('https://media.discordapp.net/attachments/1293925675144839250/1364588481447329863/Screenshot_1446.jpg?ex=680a378e&is=6808e60e&hm=a5764a49566d20121f9403ba598ac11ba0d6447f93457ab837fb777b97a3e7ea&=&format=webp&width=981&height=552') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 3em;
+      color: #000000;
+      animation: fadeInDown 1s ease-out;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .lineup-container {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .slider {
+      display: flex;
+      animation: slideLeft 12s linear infinite;
+    }
+
+    .gang-member {
+      flex: 0 0 auto;
+      width: 300px;
+      margin: 0 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+      box-shadow: 0 0 10px #000;
+      cursor: pointer;
+    }
+
+    .gang-member img {
+      width: 100%;
+      height: 400px; /* ปรับให้เล็กลง */
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .name {
+      margin-top: 10px;
+      font-size: 1.4em;
+      color: #8fce00;
+      font-weight: bold;
+    }
+
+    /* Popup */
+    .profile-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      width: 60%;
+    }
+
+    .popup-content img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .popup-content .name {
+      font-size: 2em;
+      margin-top: 10px;
+      color: #ffcc00;
+    }
+
+    .popup-content .bio {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: #ffcc00;
+      font-size: 1.5em;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      color: #e6b800;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffcc00;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    .close-btn:hover {
+      background: #e6b800;
+    }
+
+    /* Animations */
+    @keyframes slideLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>LINE UP GANG  FRIENVERTHAN</h1>
+
+  <div class="lineup-container">
+    <div class="slider" id="slider">
+      <div class="gang-member" onclick="openProfile('VEXUP', 'https://media.discordapp.net/attachments/1293925675144839250/1364587325857857627/Screenshot_1422.png?ex=680a367b&is=6808e4fb&hm=ae48495c53d84f41443fbf6054ba0647767500d5dada2da5146650b8431e8cd6&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม', 'https://instagram.com/vexup', 'https://facebook.com/vexup')">
+        <img src="https://media.discordapp.net/attachments/1293925675144839250/1364587325857857627/Screenshot_1422.png?ex=680a367b&is=6808e4fb&hm=ae48495c53d84f41443fbf6054ba0647767500d5dada2da5146650b8431e8cd6&=&format=webp&quality=lossless&width=552&height=552" alt="VEXUP">
+        <div class="name">VEXUP</div>
+      </div>
+
+      <div class="gang-member" onclick="openProfile('STIF', 'https://media.discordapp.net/attachments/1293925675144839250/1364587322846478346/stift.png?ex=680a367a&is=6808e4fa&hm=1839dd96fb1863c03011412f415e08c5a98fbb5825952e2597d2bc811b74f27a&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม', 'https://instagram.com/stif', 'https://facebook.com/stif')">
+        <img src="https://media.discordapp.net/attachments/1293925675144839250/1364587322846478346/stift.png?ex=680a367a&is=6808e4fa&hm=1839dd96fb1863c03011412f415e08c5a98fbb5825952e2597d2bc811b74f27a&=&format=webp&quality=lossless&width=552&height=552" alt="STIF">
+        <div class="name">STIF</div>
+      </div>
+
+      <div class="gang-member" onclick="openProfile('JXYCOP', 'https://media.discordapp.net/attachments/1293925675144839250/1364587324809281676/VEXUP.png?ex=680a367b&is=6808e4fb&hm=21c7870bb8f51e2541b80ad2e3ee6374a1acfb639788200a21a169063619a5a8&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม', 'https://instagram.com/jxycop', 'https://facebook.com/jxycop')">
+        <img src="https://media.discordapp.net/attachments/1293925675144839250/1364587324809281676/VEXUP.png?ex=680a367b&is=6808e4fb&hm=21c7870bb8f51e2541b80ad2e3ee6374a1acfb639788200a21a169063619a5a8&=&format=webp&quality=lossless&width=552&height=552" alt="JXYCOP">
+        <div class="name">JXYCOP</div>
+      </div>
+
+      <div class="gang-member" onclick="openProfile('JAIJAI', 'https://media.discordapp.net/attachments/1341407220746944622/1364590311623491746/Ticket_636.png?ex=680a3943&is=6808e7c3&hm=6a72889249fd0692340e70993248560ea3515cf57792229c406e55083e01455a&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อฉัน', 'https://instagram.com/jaijai', 'https://facebook.com/jaijai')">
+        <img src="https://media.discordapp.net/attachments/1341407220746944622/1364590311623491746/Ticket_636.png?ex=680a3943&is=6808e7c3&hm=6a72889249fd0692340e70993248560ea3515cf57792229c406e55083e01455a&=&format=webp&quality=lossless&width=656&height=656" alt="JAIJAI">
+        <div class="name">JAIJAI</div>
+      </div>
+     <div class="gang-member" onclick="openProfile('RICARDO', 'https://media.discordapp.net/attachments/1341407220746944622/1364590433988120698/Screenshot_80.png?ex=680a3960&is=6808e7e0&hm=09a228da75edd3017f8d7359a0ae0c81e99e0e76784428c8498ce205027db6a3&=&format=webp&quality=lossless&width=982&height=552', 'ติดต่อผม', 'https://instagram.com/jaijai', 'https://facebook.com/jaijai')">
+      <img src="https://media.discordapp.net/attachments/1341407220746944622/1364590433988120698/Screenshot_80.png?ex=680a3960&is=6808e7e0&hm=09a228da75edd3017f8d7359a0ae0c81e99e0e76784428c8498ce205027db6a3&=&format=webp&quality=lossless&width=982&height=552" alt="RICARDO">
+        <div class="name">RICARDO</div>
+    </div>
+  </div>
+
+  <!-- Popup Profile -->
+  <div class="profile-popup" id="profilePopup">
+    <div class="popup-content">
+      <img id="profileImg" src="" alt="Profile Image">
+      <div class="name" id="profileName"></div>
+      <div class="bio" id="profileBio"></div>
+      <div class="social-links" id="socialLinks">
+        <a id="instagramLink" href="#" target="_blank">Instagram</a>
+        <a id="facebookLink" href="#" target="_blank">Facebook</a>
+      </div>
+      <button class="close-btn" onclick="closeProfile()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openProfile(name, imgSrc, bio, instagram, facebook) {
+      document.getElementById('profileName').textContent = name;
+      document.getElementById('profileImg').src = imgSrc;
+      document.getElementById('profileBio').textContent = bio;
+      document.getElementById('instagramLink').href = instagram;
+      document.getElementById('facebookLink').href = facebook;
+      document.getElementById('profilePopup').style.display = 'flex';
+
+      document.getElementById('slider').style.animationPlayState = 'paused';
+    }
+
+    function closeProfile() {
+      document.getElementById('profilePopup').style.display = 'none';
+      document.getElementById('slider').style.animationPlayState = 'running';
+    }
+  </script>
+
+</body>
+</html>
