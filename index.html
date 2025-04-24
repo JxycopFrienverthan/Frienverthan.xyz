@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>FRIENVERTHAN</title>
-  <link rel="icon" href="https://media.discordapp.net/attachments/1293925675144839250/1364587324809281676/VEXUP.png?ex=680a367b&is=6808e4fb&hm=21c7870bb8f51e2541b80ad2e3ee6374a1acfb639788200a21a169063619a5a8&=&format=webp&quality=lossless&width=552&height=552" type="image/webp">
+  <link rel="icon" href="https://media.discordapp.net/attachments/1347236954705494016/1363554958041022655/a154648b79b7119a3bfaf1cdbb4b133e.png?ex=680b1243&is=6809c0c3&hm=0cb6eddc6d816429bb17e4aac2bf3e670b2b39a9c537024a2d5160cd60e69748&=&format=webp&quality=lossless" type="image/webp">
   <style>
     body {
       margin: 0;
-      background: url('https://media.discordapp.net/attachments/1293925675144839250/1364588481447329863/Screenshot_1446.jpg?ex=680a378e&is=6808e60e&hm=a5764a49566d20121f9403ba598ac11ba0d6447f93457ab837fb777b97a3e7ea&=&format=webp&width=981&height=552') no-repeat center center fixed;
+      background: url('https://media.discordapp.net/attachments/1293925675144839250/1364588481447329863/Screenshot_1446.jpg?ex=680ae04e&is=68098ece&hm=a5d4ba85f3dc749ca752608c837b3b29dfea421b31b8e1defb20744bafa1b58e&=&format=webp&width=981&height=552') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Arial', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
       color: white;
     }
 
@@ -18,20 +18,23 @@
       text-align: center;
       padding: 20px;
       font-size: 3em;
-      color: #000000;
-      text-shadow: 2px 2px 5px black;
+      color: #5acc18;
+      text-shadow: 2px 2px 5px rgb(236, 158, 13);
     }
 
     .lineup-container {
       width: 100%;
-      overflow: hidden;
-      padding: 20px 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
     }
 
     .slider {
-      display: flex;
-      width: max-content;
-      animation: slideLeft 10s linear infinite;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
     }
 
     @keyframes slideLeft {
@@ -39,10 +42,11 @@
       100% { transform: translateX(-50%); }
     }
 
+    .slider.paused {
+      animation-play-state: paused;
+    }
+
     .gang-member {
-      flex: 0 0 auto;
-      width: 300px;
-      margin: 0 20px;
       background: rgba(0, 0, 0, 0.6);
       padding: 10px;
       border-radius: 10px;
@@ -53,7 +57,7 @@
 
     .gang-member img {
       width: 100%;
-      height: 400px;
+      height: 300px;
       object-fit: cover;
       border-radius: 8px;
     }
@@ -61,7 +65,7 @@
     .name {
       margin-top: 10px;
       font-size: 1.4em;
-      color: #8fce00;
+      color: #42e011;
       font-weight: bold;
     }
 
@@ -84,7 +88,8 @@
       border-radius: 10px;
       text-align: center;
       color: white;
-      width: 60%;
+      width: 90%;
+      max-width: 600px;
     }
 
     .popup-content img {
@@ -97,7 +102,7 @@
     .popup-content .name {
       font-size: 2em;
       margin-top: 10px;
-      color: #ffcc00;
+      color: #12e02d;
     }
 
     .popup-content .bio {
@@ -113,19 +118,19 @@
     }
 
     .social-links a {
-      color: #ffcc00;
+      color: #19e044;
       font-size: 1.5em;
       text-decoration: none;
     }
 
     .social-links a:hover {
-      color: #e6b800;
+      color: #0feb0f;
     }
 
     .close-btn {
       margin-top: 20px;
       padding: 10px 20px;
-      background: #ffcc00;
+      background: #e41515;
       color: black;
       border: none;
       border-radius: 5px;
@@ -134,23 +139,51 @@
     }
 
     .close-btn:hover {
-      background: #e6b800;
+      background: #d61212;
+    }
+
+    @media (max-width: 600px) {
+      .slider {
+        grid-template-columns: 1fr;
+      }
+
+      .gang-member img {
+        height: 250px;
+      }
+    }
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: rgb(14, 219, 59);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
+  <div id="overlay">
+    ยินดีต้อนรับเข้าสู่เว็บไซต์ของเรานะค้าบ ยินดีต้อนรับทุกคนนะค้าบ ทำโดย:FRIENVERTHAN โปรดรอ5วินาทีมันจะหายไปเอง
+  </div>
 
   <h1>LINE UP GANG FRIENVERTHAN</h1>
 
   <div class="lineup-container">
     <div class="slider" id="slider">
       
-      <div class="gang-member" onclick="openProfile('VEXUP', 'https://media.discordapp.net/attachments/1293925675144839250/1364587325857857627/Screenshot_1422.png?ex=680a367b&is=6808e4fb&hm=ae48495c53d84f41443fbf6054ba0647767500d5dada2da5146650b8431e8cd6&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม','', 'https://www.facebook.com/share/1BmsQHfVwo/')">
+      <div class="gang-member" onclick="openProfile('VEXUP', 'https://media.discordapp.net/attachments/1293925675144839250/1364587325857857627/Screenshot_1422.png?ex=680a367b&is=6808e4fb&hm=ae48495c53d84f41443fbf6054ba0647767500d5dada2da5146650b8431e8cd6&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม', '', 'https://www.facebook.com/share/1BmsQHfVwo/')">
         <img src="https://media.discordapp.net/attachments/1293925675144839250/1364587325857857627/Screenshot_1422.png?ex=680a367b&is=6808e4fb&hm=ae48495c53d84f41443fbf6054ba0647767500d5dada2da5146650b8431e8cd6&=&format=webp&quality=lossless&width=552&height=552" alt="VEXUP">
         <div class="name">VEXUP</div>
       </div>
 
-      <div class="gang-member" onclick="openProfile('STIF', 'https://media.discordapp.net/attachments/1293925675144839250/1364587322846478346/stift.png?ex=680a367a&is=6808e4fa&hm=1839dd96fb1863c03011412f415e08c5a98fbb5825952e2597d2bc811b74f27a&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม','', 'https://www.facebook.com/share/192u4UfaSQ/')">
+      <div class="gang-member" onclick="openProfile('STIF', 'https://media.discordapp.net/attachments/1293925675144839250/1364587322846478346/stift.png?ex=680a367a&is=6808e4fa&hm=1839dd96fb1863c03011412f415e08c5a98fbb5825952e2597d2bc811b74f27a&=&format=webp&quality=lossless&width=552&height=552', 'ติดต่อผม', '', 'https://www.facebook.com/share/192u4UfaSQ/')">
         <img src="https://media.discordapp.net/attachments/1293925675144839250/1364587322846478346/stift.png?ex=680a367a&is=6808e4fa&hm=1839dd96fb1863c03011412f415e08c5a98fbb5825952e2597d2bc811b74f27a&=&format=webp&quality=lossless&width=552&height=552" alt="STIF">
         <div class="name">STIF</div>
       </div>
@@ -160,29 +193,41 @@
         <div class="name">JXYCOP</div>
       </div>
 
-      <div class="gang-member" onclick="openProfile('JAIJAI','https://cdn.discordapp.com/attachments/1341407220746944622/1364664631834050560/20250423221552_1.png?ex=680a7e7a&is=68092cfa&hm=9b536828709c5f71ddbd6084581b76348886b892482fdf7c970e368d85ed21d0&', 'ติดต่อฉัน','','https://www.facebook.com/share/1USSmNKthq/')">
-        <img src="https://cdn.discordapp.com/attachments/1341407220746944622/1364664631834050560/20250423221552_1.png?ex=680a7e7a&is=68092cfa&hm=9b536828709c5f71ddbd6084581b76348886b892482fdf7c970e368d85ed21d0&" alt="JAIJAI">
+      <div class="gang-member" onclick="openProfile('JAIJAI', 'https://media.discordapp.net/attachments/1341407220746944622/1364590311623491746/Ticket_636.png?ex=680a3943&is=6808e7c3&hm=6a72889249fd0692340e70993248560ea3515cf57792229c406e55083e01455a&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อฉัน', '', 'https://www.facebook.com/share/1USSmNKthq/')">
+        <img src="https://media.discordapp.net/attachments/1341407220746944622/1364590311623491746/Ticket_636.png?ex=680a3943&is=6808e7c3&hm=6a72889249fd0692340e70993248560ea3515cf57792229c406e55083e01455a&=&format=webp&quality=lossless&width=656&height=656" alt="JAIJAI">
         <div class="name">JAIJAI</div>
       </div>
 
-      <div class="gang-member" onclick="openProfile('RICARDO', 'https://media.discordapp.net/attachments/1341407220746944622/1364590433988120698/Screenshot_80.png?ex=680a3960&is=6808e7e0&hm=09a228da75edd3017f8d7359a0ae0c81e99e0e76784428c8498ce205027db6a3&=&format=webp&quality=lossless&width=982&height=552', 'ติดต่อผม','', 'https://www.facebook.com/share/1CBsWCKzLo/')">
+      <div class="gang-member" onclick="openProfile('RICARDO', 'https://media.discordapp.net/attachments/1341407220746944622/1364590433988120698/Screenshot_80.png?ex=680a3960&is=6808e7e0&hm=09a228da75edd3017f8d7359a0ae0c81e99e0e76784428c8498ce205027db6a3&=&format=webp&quality=lossless&width=982&height=552', 'ติดต่อผม', '', 'https://www.facebook.com/share/1CBsWCKzLo/')">
         <img src="https://media.discordapp.net/attachments/1341407220746944622/1364590433988120698/Screenshot_80.png?ex=680a3960&is=6808e7e0&hm=09a228da75edd3017f8d7359a0ae0c81e99e0e76784428c8498ce205027db6a3&=&format=webp&quality=lossless&width=982&height=552" alt="RICARDO">
         <div class="name">RICARDO</div>
       </div>
 
-      <div class="gang-member" onclick="openProfile('𝙋𝙤𝙩𝙩𝙚𝙧', 'https://media.discordapp.net/attachments/1290336305338908693/1364629144885002360/q42.png?ex=680a5d6d&is=68090bed&hm=efc4a2acf8aeb00476c1d4ff4ca3b06237fa2dfb0451003260d83282bf69bc01&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อผม','','')">
+      <div class="gang-member" onclick="openProfile('𝙋𝙤𝙩𝙩𝙚𝙧', 'https://media.discordapp.net/attachments/1290336305338908693/1364629144885002360/q42.png?ex=680a5d6d&is=68090bed&hm=efc4a2acf8aeb00476c1d4ff4ca3b06237fa2dfb0451003260d83282bf69bc01&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อผม', '', '')">
         <img src="https://media.discordapp.net/attachments/1290336305338908693/1364629144885002360/q42.png?ex=680a5d6d&is=68090bed&hm=efc4a2acf8aeb00476c1d4ff4ca3b06237fa2dfb0451003260d83282bf69bc01&=&format=webp&quality=lossless&width=656&height=656" alt="𝙋𝙤𝙩𝙩𝙚𝙧">
         <div class="name">𝙋𝙤𝙩𝙩𝙚𝙧</div>
       </div>
 
-      <div class="gang-member" onclick="openProfile('SHIMON', 'https://media.discordapp.net/attachments/1291313231138390050/1364633858233995264/271590_20241208041555_1.png?ex=680a61d1&is=68091051&hm=426f80649746b756c20b44a2f9268dcf35b1d265ceaf1dd5a1092f5290075905&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อผม','', 'https://www.facebook.com/share/197W8b8W3F/')">
+      <div class="gang-member" onclick="openProfile('SHIMON', 'https://media.discordapp.net/attachments/1291313231138390050/1364633858233995264/271590_20241208041555_1.png?ex=680a61d1&is=68091051&hm=426f80649746b756c20b44a2f9268dcf35b1d265ceaf1dd5a1092f5290075905&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อผม', '', 'https://www.facebook.com/share/197W8b8W3F/')">
         <img src="https://media.discordapp.net/attachments/1291313231138390050/1364633858233995264/271590_20241208041555_1.png?ex=680a61d1&is=68091051&hm=426f80649746b756c20b44a2f9268dcf35b1d265ceaf1dd5a1092f5290075905&=&format=webp&quality=lossless&width=656&height=656" alt="SHIMON">
         <div class="name">SHIMON</div>
       </div>
 
+     <div class="gang-member" onclick="openProfile('JAOFIRST', 'https://media.discordapp.net/attachments/1341407220746944622/1364895311704625183/20250424151437_1.png?ex=680b5550&is=680a03d0&hm=270960d5afb44d4d69683aad683f0437c36d6b6353c931ceb338abb2ef7d3fee&=&format=webp&quality=lossless&width=656&height=656', 'ติดต่อผม', 'https://www.instagram.com/kumiblacklist?igsh=aDd6M3E1MHBhMnA5', 'https://www.facebook.com/share/16RdimrQMM/')">
+        <img src="https://media.discordapp.net/attachments/1341407220746944622/1364895311704625183/20250424151437_1.png?ex=680b5550&is=680a03d0&hm=270960d5afb44d4d69683aad683f0437c36d6b6353c931ceb338abb2ef7d3fee&=&format=webp&quality=lossless&width=656&height=656" alt="JAOFIRST">
+        <div class="name">JAOFIRST</div>
+      </div>
+
+    <div class="gang-member" onclick="openProfile('DAVIS', 'https://media.discordapp.net/attachments/1341407220746944622/1364777104754868305/20250118_084811.jpg?ex=680ae73a&is=680995ba&hm=5b07b45a0336afdafdae5d8ae63c2726d2ca90e92ab6da68985a28b70b4bc88f&=&format=webp&width=656&height=656', 'ติดต่อผม', '', '')">
+        <img src="https://media.discordapp.net/attachments/1341407220746944622/1364777104754868305/20250118_084811.jpg?ex=680ae73a&is=680995ba&hm=5b07b45a0336afdafdae5d8ae63c2726d2ca90e92ab6da68985a28b70b4bc88f&=&format=webp&width=656&height=656" alt="DAVIS">
+        <div class="name">DAVIS</div>
+      </div>
+    <div class="gang-member" onclick="openProfile('GUAYTEAW', 'https://media.discordapp.net/attachments/1364926663435096076/1364928117545898006/Screenshot_2024-09-08_113942.png?ex=680b73de&is=680a225e&hm=36bb209549ca408d81118bb198011edc08a07899e91dcc66532d33ea65401406&=&format=webp&quality=lossless&width=496&height=656', 'ติดต่อผม', '', '')">
+        <img src="https://media.discordapp.net/attachments/1364926663435096076/1364928117545898006/Screenshot_2024-09-08_113942.png?ex=680b73de&is=680a225e&hm=36bb209549ca408d81118bb198011edc08a07899e91dcc66532d33ea65401406&=&format=webp&quality=lossless&width=496&height=656" alt="GUAYTEAW">
+        <div class="name">GUAYTEAW</div>
+      </div>
     </div>
   </div>
-
   <div class="profile-popup" id="profilePopup">
     <div class="popup-content">
       <img id="profileImg" src="" alt="Profile Image">
@@ -204,13 +249,20 @@
       document.getElementById('instagramLink').href = instagram;
       document.getElementById('facebookLink').href = facebook;
       document.getElementById('profilePopup').style.display = 'flex';
-      document.getElementById('slider').style.animationPlayState = 'paused';
+      
+      document.getElementById('slider').classList.add('paused');
     }
 
     function closeProfile() {
       document.getElementById('profilePopup').style.display = 'none';
-      document.getElementById('slider').style.animationPlayState = 'running';
+      
+      document.getElementById('slider').classList.remove('paused');
     }
+
+    setTimeout(function() {
+      document.getElementById('overlay').style.display = 'none';
+    }, 5000);
   </script>
+
 </body>
 </html>
